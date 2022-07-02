@@ -1,0 +1,9 @@
+# Enable mod_rewrite
+RewriteEngine On
+# Does mandatory to the server to have the URL available in order to be processed
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Redirect every call throught index.php
+# Grab the whole URL and cache every param throught url Param
+# 
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

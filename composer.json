@@ -1,0 +1,16 @@
+{
+    "name": "manuel-cardona/talent",
+    "description": "Entrance Test for Talent.com presented by Manuel Cardona",
+    "autoload": {
+        "psr-4": {
+            "ManuelCardona\\Talent\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ManuelGCV",
+            "email": "manuel_cardona@hotmail.es"
+        }
+    ],
+    "require": {}
+}

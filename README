@@ -1,0 +1,15 @@
+This is an entrance test for TALENT.COM made by Manuel Gilberto Cardona Valencia
+
+This proyect was developed on a Windows 10 x64 enviroment
+
+This project is created under XAMPP server version 8.0.3-0
+
+It includes
+
+- PHP Version 8.0.3
+
+Will use Composer (package manager)
+
+It includes
+
+- PSR-4 autoload mapping to avoid the "required" calls using namespaces
