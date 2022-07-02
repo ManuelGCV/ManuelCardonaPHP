@@ -14,7 +14,7 @@ ini_set('display_errors', TRUE);
 
 require 'vendor/autoload.php';
 
-use ManuelCardona\Talent\Model\App;
+use ManuelCardona\Talent\Core\App;
 
 /**
  * calls main App class

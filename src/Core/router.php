@@ -1,6 +1,6 @@
 <?php
 
-namespace ManuelCardona\Talent\Model;
+namespace ManuelCardona\Talent\Core;
 
 class Router
 {

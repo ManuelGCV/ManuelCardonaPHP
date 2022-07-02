@@ -1,8 +1,8 @@
 <?php
 
-namespace ManuelCardona\Talent\Model;
+namespace ManuelCardona\Talent\Core;
 
-use ManuelCardona\Talent\Model\Router;
+use ManuelCardona\Talent\Core\Router;
 
 class App
 {
