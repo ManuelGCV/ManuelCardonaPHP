@@ -12,5 +12,7 @@
             "email": "manuel_cardona@hotmail.es"
         }
     ],
-    "require": {}
+    "require": {
+        "bramus/router": "^1.6"
+    }
 }

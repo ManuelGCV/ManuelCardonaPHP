@@ -9,9 +9,11 @@ class App
 	public function __construct()
 	{
 		/**
-		 * calls router to handle request sent
+		 * calls router to handle request receive on each call
 		 */
-		$router = new Router;
+		//$router = new Router;
+
+		
 	}
 
 	
