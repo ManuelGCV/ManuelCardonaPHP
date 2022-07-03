@@ -14,42 +14,60 @@ class Movie extends Controller
 		parent::__construct();
 	}
 
+	/**
+	 * main access when user logs in
+	 * will read movies on database and render view
+	 */
 	public function index()
 	{
 		$this->db = new MovieModel();
 		$data['movies'] = $this->db->read();
 		$this->render("movies", $data);
-		//$this->db = new MovieModel();
-		//var_dump($this->db->read());
 	}
 
+	/**
+	 * receives a string to update database
+	 * @param $_POST (custom) 
+	 * will update database with results
+	 * otherwise, will keep the database the same
+	 * in case no 
+	 */
 	public function update()
 	{
-		$update = $_POST['custom'];
+		$update = $this->post("custom");
+		if ($update === '') {
+			header("location: movies/");
+		}
 		$this->db = new MovieModel();
 		$data['movies'] = $this->db->update($update);
 		$this->render("movies", $data);
 	}
 
+	/**
+	 * receives
+	 * @param $_POST (filter, title, order start, ends) 
+	 * based on filter will filter and sort database
+	 * by like title and ordered asc or desc
+	 * or by start and end year and also asc, or desc
+	 * 
+	 */
 	public function search()
 	{
 		$this->db = new MovieModel();
-		$filter = $_POST['filter'];
+		$filter = $this->post("filter");
 		
 		if ($filter === 'title') {
-			$title = $_POST['title'];
-			$order = $_POST['order'];
+			$title = $this->post("title");
+			$order = $this->post("order");
 			$data['movies'] = $this->db->filterByMovie($title, $order);
 		
 		} else {
-			$start = $_POST['start'];
-			$ends = $_POST['ends'];
-			$order = $_POST['order'];
+			$start = $this->post("start");
+			$ends = $this->post("ends");
+			$order = $this->post("order");
 			$data['movies'] = $this->db->filterByYear($start, $ends, $order);
 		}
 		
 		$this->render("movies", $data);
-		//$this->db = new MovieModel();
-		//var_dump($this->db->read());
 	}
 }

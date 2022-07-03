@@ -3,7 +3,8 @@
 namespace ManuelCardona\Talent\Core;
 
 /**
- * 
+ * base controller including base post management
+ * render views that can call data passed from the back 
  */
 class Controller
 {
@@ -19,6 +20,9 @@ class Controller
 	
 	}
 
+	/**
+	 * base function to render views
+	 */
 	protected function render(string $name, array $data = [])
 	{
 		$data['BASE_URL'] = $this->base_url;

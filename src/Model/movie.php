@@ -5,6 +5,10 @@ namespace ManuelCardona\Talent\Model;
 use ManuelCardona\Talent\Controller\Movie;
 use ManuelCardona\Talent\Core\Database;
 
+
+/**
+ * base model for Movies, as entity movie was never used
+ */
 class MovieModel
 {
 	private Database $db;
@@ -21,6 +25,12 @@ class MovieModel
 		$this->db = new Database('movie');
 	}
 
+	/**
+	 * Curl call that will read movie list from 
+	 * https://www.omdbapi.com/
+	 * @param string $update
+	 * after reading it, will update database movies.json
+	 */
 	private function retrieve(string $update)
 	{
 		$data = json_decode(file_get_contents(filename:dirname(__DIR__, 1).'/Database/'.'movies'.'.json'), true);
@@ -56,12 +66,13 @@ class MovieModel
 		return $data;
 	}
 
+
 	public function filterByMovie(string $title, string $order)
 	{
 		$data = json_decode(file_get_contents(filename:dirname(__DIR__, 1).'/Database/'.'movies'.'.json'), true);
 		$newData = [];
 		if ($title === '') {
-			$newData = $data;
+			$newData = $data['Search'];
 		} else {
 			foreach ($data['Search'] as $movie) {
 			
@@ -72,13 +83,13 @@ class MovieModel
 		}
 		if ($order === 'asc') {
 			usort($newData, function($first, $second){
-				return strtolower($first['Title']) < strtolower($second['Title']);
+				return strtolower($first['Title']) <=> strtolower($second['Title']);
 			});
 			
 			
 		} else {
 			usort($newData, function($first, $second){
-				return strtolower($first['Title']) > strtolower($second['Title']);
+				return strtolower($second['Title']) <=> strtolower($first['Title']);
 			});
 			
 		}

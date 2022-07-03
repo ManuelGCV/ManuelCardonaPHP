@@ -21,9 +21,14 @@ class Auth extends Controller
 	public function index()
 	{
 		$this->render("login");
-		
 	}
 
+	/**
+	 * receive post call and verify variables
+	 * @param $_POST (username, email, phoneNumber, password)
+	 * will save user and redirect if corrects
+	 * will return errors variable to be shown on view 
+	 */
 	public function save()
 	{
 		$username = $this->post("username");
@@ -73,6 +78,15 @@ class Auth extends Controller
 		$this->render("login");
 	}
 
+	/**
+	 * will validate user login
+	 * @param $_POST (username, password)
+	 * verify user and password match
+	 * if true, will set $_SESSION (username) to enable access
+	 * will redirect to movies views
+	 * 
+	 * otherwise will return error to login view
+	 */
 	public function validate()
 	{
 		$username = $this->post("username");
@@ -102,7 +116,7 @@ class Auth extends Controller
 				$this->render("login", $data);
 			} else {
 				$_SESSION['username'] = $username;
-				header("location: movies/find");
+				header("location: movies/");
 			}
 		}
 

@@ -25,10 +25,18 @@ function authGuard(){
 	}
 }
 
+
 $router->post('/movies/update', function(){
 	authGuard();
 	$controller = new Movie;
 	$controller->update();
+	
+});
+
+$router->get('/movies', function(){
+	authGuard();
+	$controller = new Movie;
+	$controller->index();
 	
 });
 
@@ -37,7 +45,6 @@ $router->post('/movies/search', function(){
 	$controller = new Movie;
 	$controller->search();
 });
-
 
 $router->get('/', function(){
 	header("location: login");
